@@ -42,7 +42,6 @@ export class UserService {
     user.password = hash;
 
     const userCheck = await this.repository.findOne({ email: body.email });
-    console.log(userCheck);
 
     if (userCheck) {
       return new HttpException('Email already exists', HttpStatus.BAD_REQUEST);
@@ -82,7 +81,7 @@ export class UserService {
   async getAccessToken(payload: object) {
     const accessToken = this.jwtService.sign(payload, {
       secret: secret,
-      expiresIn: 600,
+      expiresIn: 60,
     });
 
     return accessToken;

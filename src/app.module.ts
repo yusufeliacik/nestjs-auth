@@ -7,11 +7,12 @@ import { getEnvPath } from './common/helper/env.helper';
 import { TypeOrmConfigService } from './shared/typeorm/typeorm.service';
 import { ApiModule } from './api/api.module';
 
-const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
+const envFilePath: string = getEnvPath(`${__dirname}`);
+console.log(envFilePath);
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ envFilePath, isGlobal: true }),
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({ useClass: TypeOrmConfigService }),
     ApiModule,
   ],

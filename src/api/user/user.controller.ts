@@ -24,12 +24,12 @@ export class UserController {
     return this.service.getUser(id);
   }
 
-  @Post('/signup')
+  @Post('/sign-up')
   public createUser(@Body() body: UserDto): Promise<User | HttpException> {
     return this.service.createUser(body);
   }
 
-  @Post('/signin')
+  @Post('/sign-in')
   public async signIn(@Res() response, @Body() body: UserDto): Promise<User> {
     const res = await this.service.signin(body);
     return response.status(HttpStatus.OK).json(res);
